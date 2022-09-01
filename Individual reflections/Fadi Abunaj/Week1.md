@@ -1,4 +1,5 @@
 What do I want to learn or understand better?
+
 I want to get used to the Java programming language more since we as a team have decided to work with this programming language. The goal is to revise and do java exercises.
 
 How can I help someone else, or the entire team, to learn something new?
