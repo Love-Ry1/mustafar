@@ -1,1 +1,4 @@
-
+I want to learn techniques for better coordination of larger Github projects. 
+If i have something that i think the team could benefit from knowing then i will try too make sure people are following what i am saying by asking questions that give me
+insight into how much of the meaning i wanted to convey reached the person and then adjust my explanation if not everything was clear.
+This week contributions came mainly from commits to our social contract and discussions on what add/change in other parts.
