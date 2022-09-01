@@ -1,0 +1,11 @@
+- What do I want to learn or understand better?
+I want to get more familiar with how agile workflow and SCRUM works and what all the necessary terminology means. I also want to learn how to use all these new work methods to our advantage for the project.
+
+- How can I help someone else, or the entire team, to learn something new?
+If someone has a question, I can try to answer it or help to lookup the answer.
+
+- What is my contribution towards the team's use of Scrum?
+So far we have not really used many SCRUM methods, but I have contributed by participating and being active in the team meetings.
+
+- What is my contribution towards the team's deliveries?
+I created a GitHub repository for the team and helped with writing and discussing the social contract.
