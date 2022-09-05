@@ -17,3 +17,5 @@ effort estimation / planning poker will be used in order to not take on too much
 13. Every team member is responsible for being on time for meetings and for working in the sprints when a time is agreed upon by all members.
 14. The importance of deadline, each subgroup will aim to complete their task at or before deadline if a subgroup is not able to complete their task; they will still commit whatever is done before scrum meetings 
 15. Comments which we use in our project should be clear and useful, and mostly explain why instead of what 
+16. All public methods should have javadoc comments. Javadoc comments should explain what a method does, but not how.
+17. Single-line comments inside of methods can also be used where necessary to explain the inner workings of a complicated method.
