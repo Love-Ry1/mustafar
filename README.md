@@ -1,3 +1,3 @@
-# DAT257 - Team Mustafar
+# DAT257/DIT257 - Team Mustafar
 
 ## Project Description
