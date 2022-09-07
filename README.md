@@ -8,13 +8,41 @@ Project group Mustafar is an idea of an Android application that makes parkings 
 
 
 ## Contributors 
-
 Below we have a table that lists the github user names of the contributors and their corresponding real names within the team.
 
-Civilangem0:       Fadi Abunaj    
-abbasfaizi:        Abbas Faizi    
-Mustafa0134:       Mustafa Bawi    
-Love-Ry1:          Love Rymo        
-Zakariya00:        Zakariya Omar    
-ksedix:            Mirco Ghadri  
-randomUsernameN5:  Gabriel Malmstedt
+<table>
+  <tr>
+    <th>GitHub username</th>
+    <th>Name</th>
+  </tr>
+  <tr>
+    <td>Civilangem0</td>
+    <td>Fadi Abunaj</td>
+  </tr>
+  <tr>
+    <td>abbasfaizi</td>
+    <td>Abbas Faizi</td>
+  </tr>
+  <tr>
+    <td>Mustafa0134</td>
+    <td>Mustafa Bawi</td>
+  </tr>
+  <tr>
+    <td>Love-Ry1</td>
+    <td>Love Rymo</td>
+  </tr>
+  <tr>
+    <td>Zakariya00</td>
+    <td>Zakariya Omar</td>
+  </tr>
+  <tr>
+    <td>ksedix</td>
+    <td>Mirco Ghadri</td>
+  </tr>
+  <tr>
+    <td>randomUsernameN5</td>
+    <td>Gabriel Malmstedt</td>
+  </tr>
+</table>
+
+
