@@ -1,0 +1,12 @@
+- What do I want to learn or understand better?
+We have decided to develop an android application so I want to learn how to use the tools that we are going to use for that. 
+
+- How can I help someone else, or the entire team, to learn something new?
+I think i can help the team with some programming and git knowledge.
+
+- What is my contribution towards the team's use of Scrum?
+We still have not really used much of the SCRUM methods. We have started to discuss some of the project requirements and possible user-stories, which I helped with. 
+
+- What is my contribution towards the team's deliveries?
+This week I contributed by helping with planning the project, doing a business model and app mockup. I also helped with creating a short PowerPoint presentation about our project.
+I participated in some team-meetings we had where we planned for the future of the project and the future sprints.
