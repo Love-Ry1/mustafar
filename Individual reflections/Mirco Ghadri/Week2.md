@@ -8,7 +8,7 @@ Participating in discord meetings where we discuss android studio.
 
 #### 3. What is my contribution towards the team's application of scrum?
 
-Building a simple hello world app in android studio and running it on an android virtual device/emulator.
+Building a simple hello world app in the first sprint using android studio and running the app on an android virtual device/emulator.
 
 #### 4. What is my contribution towards the team's deliveries? 
 
