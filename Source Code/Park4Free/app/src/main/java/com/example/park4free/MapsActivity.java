@@ -50,5 +50,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sweden = new LatLng(-30, 145);
         mMap.addMarker(new MarkerOptions().position(sweden).title("Marker in sweden"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sweden));
+
     }
 }
