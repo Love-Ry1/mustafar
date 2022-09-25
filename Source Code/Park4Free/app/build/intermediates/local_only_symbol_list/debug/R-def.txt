@@ -9,8 +9,17 @@ color teal_700
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id bottom_navigation
+id button1
+id elem1
+id elem2
 id map
+id navigation_explore
+id navigation_home
+id navigation_subscriptions
 layout activity_maps
+menu bottom_navigation_menu
+menu my_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

@@ -4,6 +4,10 @@
         "source": "com.example.park4free.app-main-34:/mipmap-hdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.example.park4free.app-merged_res-32:/menu_bottom_navigation_menu.xml.flat",
+        "source": "com.example.park4free.app-main-34:/menu/bottom_navigation_menu.xml"
+    },
+    {
         "merged": "com.example.park4free.app-merged_res-32:/mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "com.example.park4free.app-main-34:/mipmap-mdpi/ic_launcher_round.webp"
     },
@@ -66,5 +70,9 @@
     {
         "merged": "com.example.park4free.app-merged_res-32:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "com.example.park4free.app-main-34:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-32:/menu_my_menu.xml.flat",
+        "source": "com.example.park4free.app-main-34:/menu/my_menu.xml"
     }
 ]

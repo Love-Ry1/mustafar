@@ -2672,10 +2672,12 @@ id beginning
 id bestChoice
 id blocking
 id bottom
+id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id button1
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -2759,6 +2761,8 @@ id edit_query
 id edittext_dropdown_editable
 id edittext_dropdown_noneditable
 id elastic
+id elem1
+id elem2
 id end
 id endToStart
 id enterAlways
@@ -2890,7 +2894,10 @@ id navigation_bar_item_icon_view
 id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
+id navigation_explore
 id navigation_header_container
+id navigation_home
+id navigation_subscriptions
 id never
 id neverCompleteToEnd
 id neverCompleteToStart
@@ -3255,6 +3262,8 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu bottom_navigation_menu
+menu my_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
