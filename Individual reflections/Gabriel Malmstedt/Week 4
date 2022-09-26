@@ -1,0 +1,13 @@
+-What do i want to understand better? 
+How to obtain street adresses from google maps.
+How to design my code in order to minimize merge conflicts.
+-How can i aid others in their learning?
+same as last week, although i would add introducing longer pauses in my explanations openning up for a natural question flow, and if i am able to; show example code on my 
+machine whilst walking through its workings.
+-What is my contribution towards the teams use of scrum
+After discussion with the team i nail down which user stories to include in the sprint and what can be considered done. I try to organize times for meetings and
+what we can reasonably be expected to have completed untill these, aswell as what the meeting will be about (all this is ofcourse done after conversations with the team)
+-Contributions towards deliveries
+I found a reasonable format for our buttons and other user interaction elements in the form of RelativeLayout. I also added search functionality to our search field
+that currently handles markers, although i will change this to instead handle adresses.
+Scheduled meetings, and in conjuction with others decide on topics for these.
