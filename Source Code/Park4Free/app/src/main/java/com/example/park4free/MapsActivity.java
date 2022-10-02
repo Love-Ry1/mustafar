@@ -35,8 +35,8 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+//import com.google.android.gms.location.FusedLocationProviderClient;
+//import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -442,7 +442,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     }
 
     private void OnGPS() {startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));}
-
+    //Testing to comment
     private void getLocation() {
         Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (locationGPS != null) {
