@@ -49,4 +49,6 @@ Below we have a table that lists the github user names of the contributors and t
 
 In this section you will be able to find paths to our source code,reflections,social contract, definitions of done, our user stories and scrum board. Links to everything is provided below:
 
+-Social Contract.md
+
 
