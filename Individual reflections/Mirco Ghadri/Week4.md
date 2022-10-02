@@ -9,7 +9,7 @@ Share my findings on discord
 
 #### 3. What is my contribution towards the team's application of scrum?
 
-Doing my part of the user stories in the third sprint. Coming up with new user stories. Helping to write the team reflection.
+Doing my part of the user stories in the second sprint. Coming up with new user stories. Helping to write the team reflection.
 
 #### 4. What is my contribution towards the team's deliveries? 
 
