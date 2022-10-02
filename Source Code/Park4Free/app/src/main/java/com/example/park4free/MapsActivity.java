@@ -442,7 +442,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     }
 
     private void OnGPS() {startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));}
-    //Testing to comment for commits
+    //Testing to comment for commitss
     private void getLocation() {
         Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (locationGPS != null) {
