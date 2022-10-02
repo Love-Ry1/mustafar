@@ -6,7 +6,7 @@
 
 #### 3. What is my contribution towards the team's application of scrum?
 
-Doing my part of the user stories in the fourth sprint.
+Doing my part of the user stories in the third sprint.
 
 #### 4. What is my contribution towards the team's deliveries? 
 
