@@ -49,7 +49,13 @@ Below we have a table that lists the github user names of the contributors and t
 
 In this section you will be able to find paths to our source code,reflections,social contract, definitions of done, our user stories and scrum board. Links to everything is provided below:
 
--[Social contract](https://github.com/Love-Ry1/mustafar/blob/main/Social%20Contract.md)
+- [Social contract](https://github.com/Love-Ry1/mustafar/blob/main/Social%20Contract.md)
+- [Definitions of Done](https://github.com/Love-Ry1/mustafar/blob/main/Definitions%20of%20done.md)
+- [Team Reflections](https://github.com/Love-Ry1/mustafar/tree/main/Team%20Reflections)
+- [Individual reflections](https://github.com/Love-Ry1/mustafar/tree/main/Individual%20reflections)
+- [User stories](https://github.com/Love-Ry1/mustafar/issues)
+- [Scrum Board](https://github.com/users/Love-Ry1/projects/1/views/1)
+- [Source code](https://github.com/Love-Ry1/mustafar/tree/main/Source%20Code)
 
 
 
