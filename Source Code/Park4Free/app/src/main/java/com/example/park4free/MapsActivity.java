@@ -2,37 +2,30 @@ package com.example.park4free;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationRequest;
-import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.google.android.gms.location.FusedLocationProviderClient;
@@ -58,21 +51,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.GenericArrayType;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.logging.Handler;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback {
 
@@ -82,10 +63,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     //Search related
     private RecyclerView recyclerView;
-    private List<Address> addressList;
+    private ArrayList<ItemModel> itemModels;
     private SearchView searchView;
     private ItemAdapter itemAdapter;
-
 
 
     FloatingActionButton button;
@@ -109,13 +89,12 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
      * INSERT DESCRIPTION OF FILTERLIST
      * @param s the string adress used to get location
      */
-    private void filterlist(String s){
+    private void filterlist(String s) {
         List<Address> filterList = new ArrayList<>();
         String address = s;
 
         // complete filterlist
-
-        if (!TextUtils.isEmpty(address)){
+        if (!TextUtils.isEmpty(address)) {
 
             Geocoder geocoder = new Geocoder(this);
 
@@ -127,19 +106,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
         }
 
-        /*
-        for(PlaceHolderItem item : itemList){
-            if(item.getName().toLowerCase().contains(s.toLowerCase())){
-                filterList.add(item);
-            }
-        }
-
-         */
-
-        if(filterList.isEmpty()){
-            Toast.makeText(this,"no data",Toast.LENGTH_SHORT).show();
-        }
-        else{
+        if (filterList.isEmpty()) {
+            Toast.makeText(this, "no data", Toast.LENGTH_SHORT).show();
+        } else {
             itemAdapter.setFilteredList(filterList);
         }
 
@@ -148,58 +117,84 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     /**
      * INSERT JAVADOC
      */
-    public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+    public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-        private List<PlaceHolderItem> items;
-        public ItemAdapter(List<Address> items){
+        private List<ItemModel> items;
+        private Context context;
 
-            // convert address to item
-            if(!items.isEmpty())
-            for(Address address : items){
-                this.items.add(new PlaceHolderItem(address.getAddressLine(1),address.getLongitude(),address.getLatitude()));
-            }
-            else{
-                this.items = new ArrayList<>();
-            }
+
+        //private String[] localDataSet;
+        public ItemAdapter(Context context, List<ItemModel> items) {
+
+            this.context = context;
+            this.items = new ArrayList<>();
+
 
         }
 
-        public void setFilteredList(List<Address> filteredList){
+        // sets ItemModels in items converted from a list of adresses in filterlist
+        public void setFilteredList(List<Address> filteredList) {
 
-            if(!items.isEmpty())
-                for(Address address : filteredList){
-                    this.items.add(new PlaceHolderItem(address.getAddressLine(1),address.getLongitude(),address.getLatitude()));
+            if (!items.isEmpty())
+                for (Address address : filteredList) {
+                    this.items.add(new ItemModel(address.getAddressLine(1), address.getLongitude(), address.getLatitude()));
                 }
             notifyDataSetChanged();
 
         }
 
-
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return null;
+
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View view = inflater.inflate(R.layout.text_row_item, parent, false);
+
+            return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
+            items.add(new ItemModel("name",1,1));
+
+            ((ViewHolder) holder).getTextView().setText(items.get(position).getName());
+
         }
+
 
         @Override
         public int getItemCount() {
+            //return items.size();
             return items.size();
         }
     }
 
+    // Determines which type of view you will enter the data in
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView textView;
+
+        public ViewHolder(View view) {
+            super(view);
+            // Define click listener for the ViewHolder's View
+
+            textView = (TextView) view.findViewById(R.id.textView);
+        }
+
+        public TextView getTextView() {
+            return textView;
+        }
+    }
+
+
     // change below class depending on the data format
-    public class PlaceHolderItem{
+    public class ItemModel {
 
         private String name;
         private double x;
         private double y;
 
-        public PlaceHolderItem(String name, double x, double y){
+        public ItemModel(String name, double x, double y) {
 
             this.name = name;
             this.x = x;
@@ -222,6 +217,14 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        binding = ActivityMapsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        if (!checking4Permissions()) ask4Permissions();
+
+        menuBottom = findViewById(R.id.bottom_navigation);
+
         searchView = findViewById(R.id.searchView1);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -240,18 +243,12 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         recyclerView = findViewById(R.id.recyclerView1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        addressList = new ArrayList<>();
+        itemModels = new ArrayList<>();
+
 
         // below leads to recycleView handling placeHolderItems
-        itemAdapter = new ItemAdapter(addressList);
+        itemAdapter = new ItemAdapter(this, itemModels);
         recyclerView.setAdapter(itemAdapter);
-
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        if (!checking4Permissions()) ask4Permissions();
-
-        menuBottom = findViewById(R.id.bottom_navigation);
 
 
         button = findViewById(R.id.button1);
@@ -287,8 +284,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         mapFragment.getMapAsync(this);
 
         //new MyJSONTask().execute();
-
-
 
 
     }
@@ -333,14 +328,13 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setCompassEnabled(true);
 
-        mMap.setPadding(0,20,50, 450); //----
+        mMap.setPadding(0, 20, 50, 450); //----
 
         sweden = dropMarker(new LatLng(-34, 145), "Sweden", true, true);
         sweden.setTag(0);
 
         //updateMarker(sweden, new LatLng(57.755170, 12.024750));
         mMap.setOnMarkerClickListener(this);
-
 
 
     }
@@ -375,7 +369,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
 
     //Checking, Asking and Setting Permissions
-    private boolean checking4Permissions () {
+    private boolean checking4Permissions() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -383,7 +377,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
             return true;
         return false;
     }
-    private void ask4Permissions () {
+
+    private void ask4Permissions() {
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                 1);
@@ -393,23 +388,24 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
             openAppSettings();
         }
     }
+
     public void openAppSettings() {
 
-        Uri packageUri = Uri.fromParts( "package", getApplicationContext().getPackageName(), null );
+        Uri packageUri = Uri.fromParts("package", getApplicationContext().getPackageName(), null);
 
         Intent applicationDetailsSettingsIntent = new Intent();
 
-        applicationDetailsSettingsIntent.setAction( Settings.ACTION_APPLICATION_DETAILS_SETTINGS );
-        applicationDetailsSettingsIntent.setData( packageUri );
-        applicationDetailsSettingsIntent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+        applicationDetailsSettingsIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        applicationDetailsSettingsIntent.setData(packageUri);
+        applicationDetailsSettingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        getApplicationContext().startActivity( applicationDetailsSettingsIntent );
+        getApplicationContext().startActivity(applicationDetailsSettingsIntent);
     }
 
     //Dropping, Removing and Updating Markers
-    private Marker dropMarker (LatLng pos, String markerText, Boolean camera, boolean zoom) {
+    private Marker dropMarker(LatLng pos, String markerText, Boolean camera, boolean zoom) {
         MarkerOptions marker = new MarkerOptions().position(pos).draggable(true).title(markerText);
-        Marker theMarker  = mMap.addMarker(marker);
+        Marker theMarker = mMap.addMarker(marker);
 
         if (camera) {
             if (zoom)
@@ -419,9 +415,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
         return theMarker;
     }
+
     private void removeMarker(Marker marker) {
         marker.remove();
     }
+
     private Marker updateMarker(Marker marker, LatLng newPos) {
         marker.setPosition(newPos);
         return marker;
@@ -433,7 +431,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
      */
     public void addMarkers(GoogleMap mMap) {
 
-        if (markerArray!=null) {
+        if (markerArray != null) {
             try {
 
                 for (int i = 0; i < markerArray.length(); i++) {
@@ -453,9 +451,21 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
     }
 
-    private void OnGPS() {startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));}
+    private void OnGPS() {
+        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+    }
     //Testing to comment for commitss
     private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (locationGPS != null) {
             double lat = locationGPS.getLatitude();
