@@ -55,6 +55,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+// har problem med att köra denna mappen
+// Markörerna för parkeringar i göteborgs stad dyker inte upp
+// hur sätter man sin location i emulator, dvs sin riktiga location och inte proxy?
+
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -82,6 +86,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     Marker sweden;
 
+    //test
 
     // get adresses and coordinates
 
