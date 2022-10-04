@@ -40,9 +40,7 @@
         android:src="@android:drawable/ic_menu_add"
         tools:text="Button one" />
 
-
-
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/searchView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,19 +72,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView1"
-        android:layout_width="291dp"
-        android:layout_height="179dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="195dp" />
-
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-
-        />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="217dp"
+        android:background="#80ECEFF1"
+        android:scrollbars="vertical"
+ />
 
 
 </RelativeLayout>
