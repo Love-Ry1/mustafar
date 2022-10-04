@@ -1,0 +1,12 @@
+- What do I want to learn or understand better?
+I still want to get better in Android studio and some scrum elements.
+
+- How can I help someone else, or the entire team, to learn something new?
+I can help with researching problems, answering questions and get better in Android studio and scrum.
+
+- What is my contribution towards the team's use of Scrum?
+I have contributed by helping with deciding meetings and agile workgroups, helping with creating user stories and using our github scrum-board, and doing project-reflections.  
+
+- What is my contribution towards the team's deliveries?
+I have together with my workgroup worked on user stories that were assigned to us. We created price tags for parking spots and made a custom icon for the spots. I helped
+with dicussing the problems, find relevant information and program the features.
