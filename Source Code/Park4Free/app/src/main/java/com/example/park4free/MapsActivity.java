@@ -105,6 +105,10 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     // get adresses and coordinates
 
+    /**
+     * INSERT DESCRIPTION OF FILTERLIST
+     * @param s the string adress used to get location
+     */
     private void filterlist(String s){
         List<Address> filterList = new ArrayList<>();
         String address = s;
@@ -141,6 +145,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     }
 
+    /**
+     * INSERT JAVADOC
+     */
     public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         private List<PlaceHolderItem> items;
@@ -341,6 +348,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     /** Called when the user clicks a marker. */
     @Override
+
     public boolean onMarkerClick(final Marker marker) {
 
         // Retrieve the data from the marker.
@@ -419,6 +427,10 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         return marker;
     }
 
+    /**
+     * Adding markers on the map
+     * @param mMap INSERT DESCRIPTION
+     */
     public void addMarkers(GoogleMap mMap) {
 
         if (markerArray!=null) {
