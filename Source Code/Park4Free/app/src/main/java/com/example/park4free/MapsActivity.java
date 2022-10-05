@@ -16,6 +16,9 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -33,6 +36,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.google.android.gms.location.FusedLocationProviderClient;
@@ -41,6 +45,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -289,8 +295,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         mapFragment.getMapAsync(this);
 
         //new MyJSONTask().execute();
-
-
     }
 
 
@@ -540,11 +544,13 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                     Log.i("Longitude", lng + "");
 
                     LatLng parkeringGbg = new LatLng(lat, lng);
-                    MarkerOptions mk = new MarkerOptions().position(parkeringGbg).title(nameTitle);
+                    String time = jsonObject.getString("MaxParkingTime");
+
+                    String text = "Max parking time: "+time;
+                    MarkerOptions mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this,R.drawable.parking_icon_green)).snippet(text);
                     //dropMarker(pos,nameTitle, true,true);
                     mMap.addMarker(mk);
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 16.0f));
-
                 }
 
             } catch (JSONException e) {
@@ -556,4 +562,54 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
 
     }
+
+
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
+
+        private final View mWindow;
+
+        public CustomInfoWindowAdapter() {
+            mWindow = getLayoutInflater().inflate(R.layout.custom_info_window, null);
+        }
+
+        private void rendowWindowText(Marker marker, View view){
+
+            String title = marker.getTitle();
+            TextView tvTitle = (TextView) view.findViewById(R.id.title);
+
+            if(!title.equals("")){
+                tvTitle.setText(title);
+            }
+
+            String snippet = marker.getSnippet();
+            TextView tvSnippet = (TextView) view.findViewById(R.id.snippet);
+
+            if(!snippet.equals("")){
+                tvSnippet.setText(snippet);
+            }
+        }
+
+        @Override
+        public View getInfoWindow(Marker marker) {
+            rendowWindowText(marker, mWindow);
+            return mWindow;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+            rendowWindowText(marker, mWindow);
+            return mWindow;
+        }
+    }
+
+
 }
