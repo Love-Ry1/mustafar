@@ -281,10 +281,18 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                     OnGPS();
                     String serverURL = "http://data.goteborg.se/ParkingService/v2.1/PublicTimeParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=57.7&longitude=11.9&radius=500&format=JSON";
                     new JSONService().execute(serverURL);
+
+                    String serverURL2 = "http://data.goteborg.se/ParkingService/v2.1/PublicTollParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=57.7&longitude=11.9&radius=500&format=JSON";
+                    new JSONService().execute(serverURL2);
+
                 } else {
                     getLocation();
+
                     String serverURL = "http://data.goteborg.se/ParkingService/v2.1/PublicTimeParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + latitude + "&longitude=" + longitude + "&radius=2000&format=JSON";
+                    String serverURL2 =  "http://data.goteborg.se/ParkingService/v2.1/PublicTollParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + latitude + "&longitude=" + longitude + "&radius=2000&format=JSON";
+
                     new JSONService().execute(serverURL);
+                    new JSONService().execute(serverURL2);
                 }
 
                 //String serverURL = "http://data.goteborg.se/ParkingService/v2.1/PublicTimeParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=57.7&longitude=11.9&radius=500&format=JSON";
@@ -534,29 +542,62 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
 
             try {
+
                 JSONArray jsonArray =new JSONArray(Content.toString());
 
                 for(int i=0;i<jsonArray.length();i++) {
+
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                    String nameTitle = jsonObject.getString("Name");
-                    double lat = jsonObject.getDouble("Lat");
-                    double lng = jsonObject.getDouble("Long");
-                    LatLng pos = new LatLng(lat, lng);
+                    try {
+                        String parkingCost = jsonObject.getString("ParkingCost");
+                        String nameTitle = jsonObject.getString("Name");
+                        double lat = jsonObject.getDouble("Lat");
+                        double lng = jsonObject.getDouble("Long");
+                        LatLng pos = new LatLng(lat, lng);
 
-                    Log.i("Test", "Hello 123456");
-                    Log.i("Latitude", lat + "");
-                    Log.i("Longitude", lng + "");
+                        Log.i("Test", "Hello 123456");
+                        Log.i("Latitude", lat + "");
+                        Log.i("Longitude", lng + "");
 
-                    LatLng parkeringGbg = new LatLng(lat, lng);
-                    String time = jsonObject.getString("MaxParkingTime");
+                        LatLng parkeringGbg = new LatLng(lat, lng);
+                        String time = jsonObject.getString("MaxParkingTime");
 
-                    String text = "Max parking time: "+time;
-                    MarkerOptions mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this,R.drawable.parking_icon_green)).snippet(text);
-                    //dropMarker(pos,nameTitle, true,true);
-                    mMap.addMarker(mk);
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 16.0f));
+
+                        String text = "Max parking time: "+time+"\n"+"Parking cost:"+parkingCost;
+
+                        MarkerOptions mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).snippet(text).icon(bitmapDescriptorFromVector(MapsActivity.this,R.drawable.parking_icon));
+                        //dropMarker(pos,nameTitle, true,true);
+                        mMap.addMarker(mk);
+
+
+                    } catch (Exception e){
+
+                        String nameTitle = jsonObject.getString("Name");
+                        double lat = jsonObject.getDouble("Lat");
+                        double lng = jsonObject.getDouble("Long");
+                        LatLng pos = new LatLng(lat, lng);
+
+                        Log.i("Test", "Hello 123456");
+                        Log.i("Latitude", lat + "");
+                        Log.i("Longitude", lng + "");
+
+                        LatLng parkeringGbg = new LatLng(lat, lng);
+                        String time = jsonObject.getString("MaxParkingTime");
+
+                        String text = "Max parking time: "+time;
+
+                        MarkerOptions mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this,R.drawable.parking_icon_green)).snippet(text);
+                        //dropMarker(pos,nameTitle, true,true);
+                        mMap.addMarker(mk);
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 16.0f));
+                    }
+
+
                 }
+
+                JSONArray jsonArray1 = new JSONArray(Content.toString());
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
