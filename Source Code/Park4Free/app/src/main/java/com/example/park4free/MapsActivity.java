@@ -325,6 +325,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         //Map Properties
         mMap = googleMap;
 
+        //Important - required to make info box able to contain rows of text
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
 
         //if (!checking4Permissions()) ask4Permissions();
 
@@ -564,7 +566,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                         String time = jsonObject.getString("MaxParkingTime");
 
 
-                        String text = "Max parking time: "+time+"\n"+"Parking cost:"+parkingCost;
+                        String text = "Max parking time: "+time+"\n"+"Parking cost: "+parkingCost;
 
                         MarkerOptions mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).snippet(text).icon(bitmapDescriptorFromVector(MapsActivity.this,R.drawable.parking_icon));
                         //dropMarker(pos,nameTitle, true,true);
