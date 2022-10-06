@@ -203,6 +203,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     }
 
     // change below class depending on the data format
+    /**
+     * INSERT JAVADOC
+     */
     public class PlaceHolderItem {
 
         private String name;
@@ -227,7 +230,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     }
 
-
+    /**
+     * INSERT JAVADOC
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -479,6 +484,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
     }
 
+    /**
+     * INSERT JAVADOC
+     */
     //Testing to comment for commitss
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -502,7 +510,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
     }
 
-
+    /**
+     * INSERT JAVADOC
+     */
     private class JSONService extends AsyncTask<String, Void, Void> {
 
         private final HttpClient Client = new DefaultHttpClient();
@@ -597,7 +607,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     }
 
-
+    /**
+     * INSERT JAVADOC
+     */
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
         vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
