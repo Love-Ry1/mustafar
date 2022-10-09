@@ -1,0 +1,9 @@
+-What do i want to understand better? 
+How to handle an AutocompleteSupportFragment
+-How can i aid others in their learning?
+Walkthrough run a short demo in a small separate program for my group in order to show how interacting with items inside the recyclerView works.
+-What is my contribution towards the teams use of scrum
+Planned out when our meetings should be held, Led the working sessions with my subgroup (the one working on search) and set times and expected results for these.
+-Contributions towards deliveries
+Did alot of work on the search functionality, connected geocoder to our searchView + recyclerView, created row items inside recyclerView to display 
+location names, made changes to our filter in order to have it more accurately return sugestions.
