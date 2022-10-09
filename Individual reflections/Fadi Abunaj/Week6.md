@@ -1,6 +1,6 @@
 1. What do I want to learn or understand better?
 
-Just make sure that our search function is fully working and bug-free by for example further improving our recycler view and filter list. The progress so far has been really good, and as I mentioned last week one of the important parts now is to find a way to combine progress from both of the two groups' code together, that's why I have also looked into it a bit and hopefully will manage to get it done next week.
+Just make sure that our search function is fully working and bug-free by for example further improving our recycler view and filter list. The progress so far has been really good, and as I mentioned last week one of the important parts now is to find a way to combine progress from both of the two groups' code together, that's why I have also looked into it a bit and hopefully will manage to get it done on the next sprint.
 
 2. How can I help someone else, or the entire team, to learn something new?
 
