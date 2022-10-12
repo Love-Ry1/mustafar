@@ -4,7 +4,7 @@ Welcome to project group Mustafar's GitHub repository!
 
 ## Project Description
 
-The Mustafar project is an idea of an Android application that makes parkings spots in Gothenburg more accessible and affordable for normal people and tourists. The app will generate parking spots on a map using API's from google maps and parking gotheburg. Users will be able to access information about these parking spots too see whether they are free or if they are billing parking slots. Other things like how long you can park there and how many parking slots will also be viewable for the users when they click on a parking slot. The user will also be able to search for areas on the map to easily get information about a certain areae and the available parkings that are located there. 
+The Mustafar project is an idea of an Android application that makes parkings spots in Gothenburg more accessible and affordable for normal people and tourists. The app will generate parking spots on a map using API's from google maps and parking gotheburg. Users will be able to access information about these parking spots too see whether they are free or if they are billing parking slots. Other things like how long you can park there and how many parking slots will also be viewable for the users when they click on a parking slot. The user will also be able to search for areas on the map to easily get information about a certain area and the available parking spots that are located there. 
 
 
 ## Contributors 
