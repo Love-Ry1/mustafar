@@ -4,7 +4,7 @@ Welcome to project group Mustafar's GitHub repository!
 
 ## Project Description
 
-Project group Mustafar is an idea of an Android application that makes parkings spots in Gothenburg more accessible and affordable for normal people and tourists. The app will generate parking spots on a map from users that are active on the application. Users will be prompted to take a photo of a new location if they find parking spots which has not yet been added to the map. When the photo has been taken, it will be visible on the map and the user can view it to check for price and other information.
+The Mustafar project is an idea of an Android application that makes parkings spots in Gothenburg more accessible and affordable for normal people and tourists. The app will generate parking spots on a map from users that are active on the application. Users will be prompted to take a photo of a new location if they find parking spots which has not yet been added to the map. When the photo has been taken, it will be visible on the map and the user can view it to check for price and other information.
 
 
 ## Contributors 
