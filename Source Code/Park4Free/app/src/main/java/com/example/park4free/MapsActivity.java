@@ -81,7 +81,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Handler;
 
-// test comment
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback {
 
@@ -449,6 +448,12 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         marker.remove();
     }
 
+    /**
+     * Updating the marker on the map
+     * @param marker the icon placed on the map
+     * @param newPos the position in terms of coordinates
+     * @return returns the marker based on the information given
+     */
     private Marker updateMarker(Marker marker, LatLng newPos) {
         marker.setPosition(newPos);
         return marker;
@@ -644,12 +649,22 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
             }
         }
 
+        /**
+         *
+         * @param marker the specific icon placed on the window
+         * @return INSERT description
+         */
         @Override
         public View getInfoWindow(Marker marker) {
             rendowWindowText(marker, mWindow);
             return mWindow;
         }
 
+        /**
+         *
+         * @param marker the specific icon placed on the window
+         * @return INSERT description
+         */
         @Override
         public View getInfoContents(Marker marker) {
             rendowWindowText(marker, mWindow);
