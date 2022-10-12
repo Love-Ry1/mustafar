@@ -1,0 +1,13 @@
+ - What do I want to learn or understand better?
+ There is not much time left of the project, therefore I want to learn how to make use of all the scrum-methods to be able to make a good project-report and project-demo.
+
+- How can I help someone else, or the entire team, to learn something new?
+I can help others by sharing my knowledge, try to solve and discuss problems, and ask if someone has questions.
+
+- What is my contribution towards the team's use of Scrum?
+By being active in team-meetings, creating user-stories, following the social contract, helping with team-reflections and communnicating with other team-members.
+
+- What is my contribution towards the team's deliveries?
+I have worked with a smaller team to work and finish the user-stories that were assigned to us. We used different api-request from gothenburg parking to be able to
+distinguish between free- and billed parking spots and show them differently on the map and show the relevent information. We also worked on the app showing the parking
+spots in a better way when zooming out on the map. 
