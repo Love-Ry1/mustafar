@@ -35,6 +35,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +61,9 @@ import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.R
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.methods.HttpGet;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.client.BasicResponseHandler;
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.client.DefaultHttpClient;
+import com.google.maps.android.clustering.ClusterManager;
+import com.google.maps.android.clustering.view.DefaultClusterRenderer;
+import com.google.maps.android.ui.IconGenerator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,6 +98,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     private SearchView searchView;
     private ItemAdapter itemAdapter;
 
+    //Used for clustering
+    private ClusterManager<MyItem> clusterManager;
 
     FloatingActionButton button;
     BottomNavigationView menuBottom;
@@ -109,10 +115,58 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     Marker sweden;
 
+    private class ParkingRenderer extends DefaultClusterRenderer<MyItem>{
 
-    // get adresses and coordinates
-    
-    
+        private final ImageView mImageView;
+        private final IconGenerator mIconGenerator = new IconGenerator(getApplicationContext());
+
+        public ParkingRenderer() {
+            super(getApplicationContext(), mMap, clusterManager);
+            mImageView = new ImageView(getApplicationContext());
+        }
+
+        @Override
+        protected void onBeforeClusterItemRendered(@NonNull MyItem parking, MarkerOptions markerOptions) {
+            // Draw a single person - show their profile photo and set the info window to show their name
+            markerOptions
+                    .icon(getItemIcon(parking))
+                    .title(parking.title);
+        }
+
+        /**
+         * Get a descriptor for a single person (i.e., a marker outside a cluster) from their
+         * profile photo to be used for a marker icon
+         *
+         * @param parking person to return an BitmapDescriptor for
+         * @return the person's profile photo as a BitmapDescriptor
+         */
+        private BitmapDescriptor getItemIcon(MyItem parking) {
+            mImageView.setImageResource(parking.profilePhoto);
+            Bitmap icon = mIconGenerator.makeIcon();
+            return BitmapDescriptorFactory.fromBitmap(icon);
+        }
+
+
+
+    }
+
+    private void setUpClusterer() {
+
+        // Initialize the manager with the context and the map.
+        // (Activity extends context, so we can pass 'this' in the constructor.)
+
+        clusterManager = new ClusterManager<MyItem>(this, mMap);
+        //Set the renderer to customize the view
+        clusterManager.setRenderer(new ParkingRenderer());
+
+
+        // Point the map's listeners at the listeners implemented by the cluster
+        // manager.
+        mMap.setOnCameraIdleListener(clusterManager);
+        mMap.setOnMarkerClickListener(clusterManager);
+
+    }
+
 
     /**
      * INSERT DESCRIPTION OF FILTERLIST
@@ -335,6 +389,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     public void onMapReady(GoogleMap googleMap) {
         //Map Properties
         mMap = googleMap;
+
+        setUpClusterer();
 
         //Important - required to make info box able to contain rows of text
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
@@ -567,18 +623,16 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
             try {
 
-                JSONArray jsonArray =new JSONArray(Content.toString());
+                JSONArray jsonArray = new JSONArray(Content.toString());
 
                 for(int i=0;i<jsonArray.length();i++) {
 
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    boolean isFree;
+                    boolean isFree = false;
                     String parkingCost = "";
 
                     try {
                         parkingCost = jsonObject.getString("ParkingCost");
-                        isFree = false;
-
                     } catch (Exception e){
                         isFree = true;
                     }
@@ -590,23 +644,38 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
                     LatLng parkeringGbg = new LatLng(lat, lng);
                     String time = jsonObject.getString("MaxParkingTime");
+                    int parkingSpaces;
+                    try {
+                        parkingSpaces = jsonObject.getInt("ParkingSpaces");
+                    } catch (Exception e){
+                        parkingSpaces = 0;
+                    }
 
                     MarkerOptions mk = new MarkerOptions();
 
+                    MyItem clusterItem;
+
+                    //custom info box
+                    //icon for clusteritem
+
                     if (isFree) {
-                        String text = "Max parking time: "+time;
-                        mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this, R.drawable.parking_icon_green)).snippet(text);
+                        String text = "Max parking time: "+time+"\n"+"Number of slots: "+parkingSpaces;
+                        clusterItem = new MyItem(lat, lng, nameTitle, text,R.drawable.parking_icon_green);
+                        //mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this, R.drawable.parking_icon_green)).snippet(text);
                     } else{
-                        String text = "Max parking time: "+time+"\n"+"Parking Cost: "+parkingCost;
-                        mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this, R.drawable.parking_icon)).snippet(text);
+                        String text = "Max parking time: "+time+"\n"+"Parking Cost: "+parkingCost+"\n"+"Number of slots: "+parkingSpaces;
+                        clusterItem = new MyItem(lat, lng,  nameTitle, text, R.drawable.parking_icon);
+                        //mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this, R.drawable.parking_icon)).snippet(text);
                     }
 
-                    mMap.addMarker(mk);
+                    //mMap.addMarker(mk);
+                    clusterManager.addItem(clusterItem);
+
+
+
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 16.0f));
 
                 }
-
-                JSONArray jsonArray1 = new JSONArray(Content.toString());
 
 
             } catch (JSONException e) {
