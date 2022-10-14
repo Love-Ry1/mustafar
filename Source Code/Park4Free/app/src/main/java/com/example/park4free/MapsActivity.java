@@ -116,7 +116,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     /**
      * INSERT DESCRIPTION OF FILTERLIST
-     * @param s the string adress used to get location
+     * @param s the string address used to get location
      */
     private void filterlist(String s) {
         List<Address> filterList = new ArrayList<>();
@@ -155,6 +155,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     /**
      * INSERT JAVADOC
+     *
+     *
+     *
      */
     public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -204,6 +207,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     // change below class depending on the data format
     /**
      * INSERT JAVADOC
+     *
+     *
      */
     public class PlaceHolderItem {
 
@@ -231,6 +236,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     /**
      * INSERT JAVADOC
+     *
+     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
