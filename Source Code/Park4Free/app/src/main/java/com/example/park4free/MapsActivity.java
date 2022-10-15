@@ -658,7 +658,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                     try {
                         parkingSpaces = jsonObject.getInt("ParkingSpaces");
                     } catch (Exception e){
-                        parkingSpaces = 0;
+                        parkingSpaces = -1;
                     }
 
                     MarkerOptions mk = new MarkerOptions();
@@ -669,7 +669,12 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                     //icon for clusteritem
 
                     if (isFree) {
-                        String text = "Max parking time: "+time+"\n"+"Number of slots: "+parkingSpaces;
+                        String text = "";
+                        if (parkingSpaces == -1){
+                            text = "Max parking time: "+time+"\n";
+                        } else {
+                            text = "Max parking time: "+time+"\n"+"Number of slots: "+parkingSpaces;
+                        }
                         clusterItem = new MyItem(lat, lng, nameTitle, text,R.drawable.parking_icon_green);
                         //mk = new MarkerOptions().position(parkeringGbg).title(nameTitle).icon(bitmapDescriptorFromVector(MapsActivity.this, R.drawable.parking_icon_green)).snippet(text);
                     } else{
