@@ -117,21 +117,32 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     private class ParkingRenderer extends DefaultClusterRenderer<MyItem>{
 
-        private final ImageView mImageView;
-        private final IconGenerator mIconGenerator = new IconGenerator(getApplicationContext());
+        //private final IconGenerator mIconGenerator = new IconGenerator(getApplicationContext());
+        //private final ImageView mImageView;
 
         public ParkingRenderer() {
             super(getApplicationContext(), mMap, clusterManager);
-            mImageView = new ImageView(getApplicationContext());
         }
 
         @Override
         protected void onBeforeClusterItemRendered(@NonNull MyItem parking, MarkerOptions markerOptions) {
+
+
+            mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
             // Draw a single person - show their profile photo and set the info window to show their name
             markerOptions
-                    .icon(getItemIcon(parking))
-                    .title(parking.title);
+                    .icon(bitmapDescriptorFromVector(MapsActivity.this, parking.parkingIcon))
+                    .title(parking.title).snippet(parking.getSnippet());
         }
+
+/*
+        @Override
+        protected void onClusterItemUpdated(@NonNull MyItem parking, Marker marker) {
+            // Same implementation as onBeforeClusterItemRendered() (to update cached markers)
+            marker.setIcon(getItemIcon(parking));
+            marker.setTitle(parking.title);
+        }
+*/
 
         /**
          * Get a descriptor for a single person (i.e., a marker outside a cluster) from their
@@ -140,12 +151,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
          * @param parking person to return an BitmapDescriptor for
          * @return the person's profile photo as a BitmapDescriptor
          */
-        private BitmapDescriptor getItemIcon(MyItem parking) {
-            mImageView.setImageResource(parking.profilePhoto);
+/*        private BitmapDescriptor getItemIcon(MyItem parking) {
+            mImageView.setImageResource(parking.parkingIcon);
             Bitmap icon = mIconGenerator.makeIcon();
             return BitmapDescriptorFactory.fromBitmap(icon);
-        }
-
+        }*/
 
 
     }
