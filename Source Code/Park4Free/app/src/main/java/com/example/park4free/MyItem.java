@@ -11,7 +11,7 @@ public class MyItem implements ClusterItem {
     private LatLng position;
     public String title;
     private String snippet;
-    public int profilePhoto;
+    public int parkingIcon;
 
     public MyItem(double lat, double lng){
         position = new LatLng(lat,lng);
@@ -23,7 +23,7 @@ public class MyItem implements ClusterItem {
         position = new LatLng(lat,lng);
         this.title = title;
         this.snippet = snippet;
-        this.profilePhoto = profilePhoto;
+        this.parkingIcon = profilePhoto;
     }
 
     @NonNull
