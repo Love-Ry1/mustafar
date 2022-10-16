@@ -5,7 +5,7 @@ This sprint I did a much more improvement and that helped me evenmore to underst
 
 How can I help someone else, or the entire team, to learn something new?
 
-I will try to be more available on our discord and chat to be able answer my teammates wonderings about our application and scrum since ther is not much more time left in the course i feel att every one in the group are getting used to scrum methodology but maybe would be some unclearity in coding and userstories which in that case i try to be the help source.
+I will try to be more available on our discord and chat to be able answer my teammates wonderings about our application and scrum since there is not much more time left in the course i feel att everyone in the group are getting used to scrum methodology but maybe would be some unclearity in coding and userstories which in that case i try to be the help source.
 
 
 what is my contribution towards the team’s use of Scrum?
