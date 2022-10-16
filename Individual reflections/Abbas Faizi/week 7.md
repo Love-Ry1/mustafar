@@ -1,6 +1,6 @@
 What do i want to learn or understand better?
 
-This sprint I did a much more improved and that helped me evermore to understand what actually is behind scrum methodology, as we reache at the end of this course though i will get better to understand how i can i use this methodology in my job carrier when i got to work.
+This sprint I did a much more improvement and that helped me evenmore to understand what actually is behind scrum methodology, as we reache at the end of this course though i will get better to understand how i can i use this methodology in my job carrier when i got to work.
 
 
 How can I help someone else, or the entire team, to learn something new?
