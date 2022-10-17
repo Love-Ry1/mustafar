@@ -1,6 +1,10 @@
 package com.example.park4free;
 
+import static java.lang.Double.parseDouble;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView.OnQueryTextListener;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -35,8 +39,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.SearchView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,7 +91,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Handler;
 
 
-public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener, OnMapReadyCallback, MyRecyclerViewAdapter.ItemClickListener {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
@@ -96,22 +101,34 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     private RecyclerView recyclerView;
     private List<Address> addressList;
     private SearchView searchView;
-    private ItemAdapter itemAdapter;
+    private MyRecyclerViewAdapter adapter;
+
+    private ArrayList<String> addresses1;
+    private ArrayList<String> addresses2;
+
+
 
     //Used for clustering
     private ClusterManager<MyItem> clusterManager;
 
     FloatingActionButton button;
     BottomNavigationView menuBottom;
+    Switch switchButton;
 
     //Values For Future Use
     private final int REFRESH_TIME = 5000; // 5 seconds to update
     private final int REFRESH_DISTANCE = 5; // 5 meters to update
     private final float zoomLevel = 16.0f;
+    private boolean CLICKABLE = false;
 
-    JSONArray markerArray;
-    LocationManager locationManager;
-    String latitude, longitude;
+
+    private JSONArray markerArray;
+    private LocationManager locationManager;
+    private String latitude, longitude;
+    private double cameralat, cameralong;
+    private final int radius = 2000;
+    private final int radius1 = 500;
+
 
     Marker sweden;
 
@@ -176,133 +193,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         mMap.setOnMarkerClickListener(clusterManager);
 
     }
-
-
-    /**
-     * INSERT DESCRIPTION OF FILTERLIST
-     * @param s the string address used to get location
-     */
-    private void filterlist(String s) {
-        List<Address> filterList = new ArrayList<>();
-        String address = s;
-
-        // complete filterlist
-
-        if (!TextUtils.isEmpty(address)) {
-
-            Geocoder geocoder = new Geocoder(this);
-
-            try {
-                filterList = geocoder.getFromLocationName(address, 10);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        /*
-        for(PlaceHolderItem item : itemList){
-            if(item.getName().toLowerCase().contains(s.toLowerCase())){
-                filterList.add(item);
-            }
-        }
-
-         */
-
-        if (filterList.isEmpty()) {
-            Toast.makeText(this, "no data", Toast.LENGTH_SHORT).show();
-        } else {
-            itemAdapter.setFilteredList(filterList);
-        }
-
-    }
-
-    /**
-     * INSERT JAVADOC
-     *
-     *
-     *
-     */
-    public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-        private List<PlaceHolderItem> items;
-
-        public ItemAdapter(List<Address> items) {
-
-            // convert address to item
-            if (!items.isEmpty())
-                for (Address address : items) {
-                    this.items.add(new PlaceHolderItem(address.getAddressLine(1), address.getLongitude(), address.getLatitude()));
-                }
-            else {
-                this.items = new ArrayList<>();
-            }
-
-        }
-
-        public void setFilteredList(List<Address> filteredList) {
-
-            if (!items.isEmpty())
-                for (Address address : filteredList) {
-                    this.items.add(new PlaceHolderItem(address.getAddressLine(1), address.getLongitude(), address.getLatitude()));
-                }
-            notifyDataSetChanged();
-
-        }
-
-
-        @NonNull
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return null;
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return items.size();
-        }
-    }
-
-    // change below class depending on the data format
-    /**
-     * INSERT JAVADOC
-     *
-     *
-     */
-    public class PlaceHolderItem {
-
-        private String name;
-        private double x;
-        private double y;
-
-        public PlaceHolderItem(String name, double x, double y) {
-
-            this.name = name;
-            this.x = x;
-            this.y = y;
-
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-    }
-
-    /**
-     * INSERT JAVADOC
-     *
-     *
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -313,14 +203,16 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         setContentView(binding.getRoot());
 
         if (!checking4Permissions()) ask4Permissions();
+        new AddressHandler(this, this).start();
+
+        menuBottom = findViewById(R.id.bottom_navigation);
+
 
         searchView = findViewById(R.id.searchView1);
         searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
+            public boolean onQueryTextSubmit(String s) {return false;}
 
             @Override
             public boolean onQueryTextChange(String s) {
@@ -329,17 +221,56 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
             }
         });
 
-        recyclerView = findViewById(R.id.recyclerView1);
-        recyclerView.setHasFixedSize(true);
+        RecyclerView recyclerView = findViewById(R.id.addressName);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        addressList = new ArrayList<>();
+        //adapter = new MyRecyclerViewAdapter(this, testA());
+        adapter = new MyRecyclerViewAdapter(this, new ArrayList<String>());
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
-        // below leads to recycleView handling placeHolderItems
-        itemAdapter = new ItemAdapter(addressList);
-        recyclerView.setAdapter(itemAdapter);
+        recyclerView.setAlpha(0);
+        switchButton = findViewById(R.id.switch1);
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);//{recyclerView.setAlpha(1); CLICKABLE = true;}
+                else mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);//{recyclerView.setAlpha(0); CLICKABLE = false;}
+            }
+        });
 
 
-        menuBottom = findViewById(R.id.bottom_navigation);
+
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);//{recyclerView.setAlpha(1); CLICKABLE = true;}
+                else mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);//{recyclerView.setAlpha(0); CLICKABLE = false;}
+            }
+        });
+
+
+
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Search view expended
+                recyclerView.setAlpha(1); CLICKABLE = true;
+                recyclerView.setVisibility(View.VISIBLE);
+                adapter.setItemModels(addresses1);
+                //addresses2 = addresses1;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                //Searchview not expanded
+                recyclerView.setAlpha(0); CLICKABLE = false;
+                recyclerView.setVisibility(View.INVISIBLE);
+                return false;
+            }
+        });
+
+
 
 
         button = findViewById(R.id.button1);
@@ -363,8 +294,12 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                 } else {
                     getLocation();
 
-                    String serverURL = "http://data.goteborg.se/ParkingService/v2.1/PublicTimeParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + latitude + "&longitude=" + longitude + "&radius=2000&format=JSON";
-                    String serverURL2 =  "http://data.goteborg.se/ParkingService/v2.1/PublicTollParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + latitude + "&longitude=" + longitude + "&radius=2000&format=JSON";
+
+                    String serverURL = "http://data.goteborg.se/ParkingService/v2.1/PublicTimeParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + latitude + "&longitude=" + longitude + "&radius=" + radius + "&format=JSON";
+                    String serverURL2 =  "http://data.goteborg.se/ParkingService/v2.1/PublicTollParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + latitude + "&longitude=" + longitude + "&radius=" + radius + "&format=JSON";
+
+                    cameralat = parseDouble(latitude);
+                    cameralong = parseDouble(longitude);
 
                     new JSONService().execute(serverURL);
                     new JSONService().execute(serverURL2);
@@ -384,6 +319,102 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
         //new MyJSONTask().execute();
     }
+
+
+
+
+    public ArrayList<String> testA() {
+        // data to populate the RecyclerView with
+        ArrayList<String> addresses = new ArrayList<>();
+        addresses.add("Tiderakningsgatan 28");
+        addresses.add("Lindholmen");
+        addresses.add("Avenyn");
+        addresses.add("Kortedala");
+        addresses.add("Angered");
+        addresses.add("Tynnered");
+
+        return addresses;
+
+        //return addresses1;
+
+        // set up the RecyclerView
+       /* RecyclerView recyclerView = findViewById(R.id.addressName);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MyRecyclerViewAdapter(this, addresses);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);*/
+    }
+
+    //TODO
+    public void setAddresses(ArrayList<String> array) {addresses1 = array; }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        if (!CLICKABLE) return;
+        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        filterlist2(adapter.getItem(position));
+    }
+
+    //TODO
+    private void filterlist(String text){
+        ArrayList<String> filteredList = new ArrayList<>();
+
+        for (String address : adapter.getmData()){
+            if(address.toLowerCase().startsWith(text.toLowerCase())) {
+                filteredList.add(address);
+            }
+        }
+
+        if(filteredList.isEmpty()){
+            Toast.makeText(this, "no data", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            adapter.setItemModels(filteredList);
+        }
+    }
+
+    private void filterlist2(String s) {
+        List<Address> filterList = new ArrayList<>();
+
+        // complete filterlist
+
+        if (!TextUtils.isEmpty(s)) {
+
+            Geocoder geocoder = new Geocoder(this);
+
+            try {
+                filterList = geocoder.getFromLocationName(s, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //Toast.makeText(this, ""+filterList.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
+            if (!filterList.isEmpty()) {
+                double Lat = filterList.get(0).getLatitude();
+                double Longt = filterList.get(0).getLongitude();
+                Toast.makeText(this, "" + Lat + ", " + Longt , Toast.LENGTH_SHORT).show();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Lat, Longt), zoomLevel));
+
+
+                String serverURL = "http://data.goteborg.se/ParkingService/v2.1/PublicTimeParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + Lat + "&longitude=" + Longt + "&radius=" + radius1 + "&format=JSON";
+                String serverURL2 =  "http://data.goteborg.se/ParkingService/v2.1/PublicTollParkings/c9848a32-3248-48e7-a28e-575e2d6d2889?latitude=" + Lat + "&longitude=" + Longt + "&radius=" + radius1 + "&format=JSON";
+
+                cameralat = Lat;
+                cameralong = Longt;
+
+                new JSONService().execute(serverURL);
+                new JSONService().execute(serverURL2);
+
+            }
+
+            else
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
 
 
     /**
@@ -431,8 +462,14 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
         mMap.setPadding(0, 20, 50, 450); //----
 
-        sweden = dropMarker(new LatLng(-34, 145), "Sweden", true, true);
-        sweden.setTag(0);
+        //sweden = dropMarker(new LatLng(-34, 145), "Sweden", true, true);
+        //sweden.setTag(0);
+
+        try {
+            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            getLocation();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(parseDouble(latitude), parseDouble(longitude)), zoomLevel));
+        } catch (Exception e) {}
 
         //updateMarker(sweden, new LatLng(57.755170, 12.024750));
         mMap.setOnMarkerClickListener(this);
@@ -687,8 +724,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                     clusterManager.addItem(clusterItem);
 
 
+                    //TODO
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(cameralat, cameralong), 15.0f));
 
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 16.0f));
 
                 }
 

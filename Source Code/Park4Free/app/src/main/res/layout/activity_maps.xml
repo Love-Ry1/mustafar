@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -13,18 +15,17 @@
         app:menu="@menu/bottom_navigation_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:itemIconTint="@color/purple_200"
-        app:itemTextColor="@color/white"
+        app:itemTextColor="#3F51B5"
         app:labelVisibilityMode="labeled"/>
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="30dp"
         tools:context=".MapsActivity" />
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -40,19 +41,20 @@
         android:src="@android:drawable/ic_menu_add"
         tools:text="Button one" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
+
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        android:background="#32120303"
 
-        android:iconifiedByDefault="true"
+        android:background="#32120303"
         android:queryHint="Enter location here!"
         android:visibility="visible"
         tools:text="Button three"
@@ -60,6 +62,7 @@
 
 
     <Switch
+        android:id="@+id/switch1"
         android:layout_width="53dp"
         android:layout_height="39dp"
         android:layout_alignParentEnd="true"
@@ -70,17 +73,24 @@
         android:layout_marginBottom="81dp"
         tools:text="Button four" />
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/addressName"
+        android:layout_width="325dp"
+        android:layout_height="231dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="217dp"
-        android:background="#80ECEFF1"
-        android:scrollbars="vertical"
- />
+
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="76dp"
+
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+
+        app:cardBackgroundColor="@android:color/transparent"
+        android:clickable="true"
+        android:fadingEdge="horizontal"
+        android:scrollbars="vertical" />
 
 
 </RelativeLayout>

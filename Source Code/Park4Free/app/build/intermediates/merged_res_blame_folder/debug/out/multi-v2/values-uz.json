@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.park4free.app-mergeDebugResources-30:/values-uz/values-uz.xml",
+            "outputFile": "com.example.park4free.app-mergeDebugResources-31:/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Zakariya\\.gradle\\caches\\transforms-3\\0753de1c687f39a26952907897fd8fc2\\transformed\\appcompat-1.5.1\\res\\values-uz\\values-uz.xml",

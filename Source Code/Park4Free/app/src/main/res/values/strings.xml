@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">park4Free</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="app_name">Park4Free</string>
+    <string name="title_activity_maps">Park4Free</string>
 </resources>

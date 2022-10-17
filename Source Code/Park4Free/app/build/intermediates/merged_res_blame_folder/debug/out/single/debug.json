@@ -1,78 +1,106 @@
 [
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/menu_bottom_navigation_menu.xml.flat",
+        "source": "com.example.park4free.app-main-35:/menu/bottom_navigation_menu.xml"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/menu_bottom_navigation_menu.xml.flat",
-        "source": "com.example.park4free.app-main-34:/menu/bottom_navigation_menu.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-hdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/drawable_parking_icon.png.flat",
+        "source": "com.example.park4free.app-main-35:/drawable/parking_icon.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/xml_backup_rules.xml.flat",
-        "source": "com.example.park4free.app-main-34:/xml/backup_rules.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.park4free.app-main-34:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/layout_activity_maps.xml.flat",
-        "source": "com.example.park4free.app-main-34:/layout/activity_maps.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/layout_activity_maps.xml.flat",
+        "source": "com.example.park4free.app-main-35:/layout/activity_maps.xml"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "com.example.park4free.app-pngs-27:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/drawable_parking_icon_green.png.flat",
+        "source": "com.example.park4free.app-main-35:/drawable/parking_icon_green.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.park4free.app-main-34:/xml/data_extraction_rules.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.park4free.app-main-35:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/layout_custom_info_window.xml.flat",
+        "source": "com.example.park4free.app-main-35:/layout/custom_info_window.xml"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.park4free.app-pngs-28:/drawable-anydpi-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/xml_backup_rules.xml.flat",
+        "source": "com.example.park4free.app-main-35:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.park4free.app-main-34:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.park4free.app-merged_res-32:/menu_my_menu.xml.flat",
-        "source": "com.example.park4free.app-main-34:/menu/my_menu.xml"
+        "merged": "com.example.park4free.app-merged_res-33:/menu_my_menu.xml.flat",
+        "source": "com.example.park4free.app-main-35:/menu/my_menu.xml"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/layout_text_row_item.xml.flat",
+        "source": "com.example.park4free.app-main-35:/layout/text_row_item.xml"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.park4free.app-main-35:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.park4free.app-merged_res-33:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.example.park4free.app-main-35:/mipmap-mdpi/ic_launcher_round.png"
     }
 ]

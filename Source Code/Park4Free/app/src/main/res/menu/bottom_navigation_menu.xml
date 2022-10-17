@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_explore"
         android:icon="@android:drawable/ic_menu_help"
         android:title="TODO" />
 
     <item
-        android:id="@+id/navigation_explore"
-        android:icon="@android:drawable/ic_menu_help"
-        android:title="TODO" />
+        android:id="@+id/navigation_home"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Map" />
 
     <item
         android:id="@+id/navigation_subscriptions"

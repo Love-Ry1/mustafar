@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.park4free.app-mergeDebugResources-30:/values-ka/values-ka.xml",
+            "outputFile": "com.example.park4free.app-mergeDebugResources-31:/values-ka/values-ka.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Zakariya\\.gradle\\caches\\transforms-3\\3975f4efeb239c6b794f70633421a69e\\transformed\\play-services-base-18.0.1\\res\\values-ka\\values.xml",

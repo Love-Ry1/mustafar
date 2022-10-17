@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.park4free.app-mergeDebugResources-30:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.park4free.app-mergeDebugResources-31:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Zakariya\\.gradle\\caches\\transforms-3\\0753de1c687f39a26952907897fd8fc2\\transformed\\appcompat-1.5.1\\res\\values-night-v8\\values-night-v8.xml",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Zakariya\\Desktop\\mustafar\\Source Code\\mustafar\\Source Code\\Park4Free\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "source": "C:\\Users\\Zakariya\\Desktop\\mustafar(final)\\Source Code\\Park4Free\\app\\src\\main\\res\\values-night\\themes.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
