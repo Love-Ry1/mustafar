@@ -90,7 +90,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
-
+    //test
 
     //Search related
     private RecyclerView recyclerView;
