@@ -1,0 +1,10 @@
+-What do i want to understand better? 
+Making clean merges that minimize disruption to previous program functionality if that functionality is something we would like to keep
+-How can i aid others in their learning?
+Same as previous weeks with the addition of writing down a short explanation of concepts i want to explain to others to myself first that i may then edit if the 
+explanation feels insuficient; more going from a script and take questions on that rather than improvising the explanation.  
+-What is my contribution towards the teams use of scrum
+As before planned meetings, what times to meet what the topic of the meeting was and roughly what we might accomplish on the meeting.
+-Contributions towards deliveries
+Continued working on search functionality: Worked on design for the recycler that we ultimately had to scrap, worked on onClick methods for the row items. 
+Tried to fix what seemed like a bug with the Geocoder api hanging on certain inputs which made it difficult to get coordinates for addresses.
