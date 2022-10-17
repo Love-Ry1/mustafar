@@ -65,11 +65,8 @@ If you do not possess an android phone or device you will need to download a vir
 
 ## Screenshots
 ### Clustering
-<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1030801555898765392/unknown.png" width=410px height = 720px/>
+<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1030801555898765392/unknown.png" width=410px height=720px/>
 ### Paid parkings
-<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1031594148639297546/blueParking.png" width=410px height = 720px/>
+<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1031594148639297546/blueParking.png" width=410px height=720px/>
 ### Free parkings
-<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1031594149012582480/greenParking.png" width=410px height = 720px/>
-
-
-
+<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1031594149012582480/greenParking.png" width=410px height=720px/>
