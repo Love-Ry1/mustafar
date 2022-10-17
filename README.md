@@ -63,7 +63,7 @@ In this section you will be able to find paths to our source code,reflections,so
 If you do not possess an android phone or device you will need to download a virtual machine in android to be able to run the app on. This works just fine by using the famous Android Studio. Firstly you should download [Android Studio](https://developer.android.com/studio) and follow the instructions to install it on your device. Then you will need to navigate back to this github repo and clone the project. You will first need to copy the link given to you in the "Code" section at the top of this repo. Then you will use this in Android studio by clicking on "Git" and then clicking on "Clone..." and getting from the version control by copying in the link. Make sure that you have avirtual device in the AVD manager. Otherwise download a "Pixel 3a API 30" which should be able to run the project. Then when this is done all you have to to is build the project and run the MainActicity.java. If the application bugs then it is highly recommended that you run the app on an Android Device!
 
 ## Screenshots
-
+<img src="https://cdn.discordapp.com/attachments/1013901192985850010/1030801555898765392/unknown.png"/>
 
 
 
