@@ -1,0 +1,13 @@
+- What do I want to learn or understand better?
+How to best present and report on our project. We still have some problems with developing in Android Studio where some feutures only work on one emulator, so I want
+to learn how to solve these issues.
+
+- How can I help someone else, or the entire team, to learn something new?
+By listening to my team-mates and see if I have some knowledge that they dont, then I can share it.
+
+- What is my contribution towards the team's use of Scrum?
+By helping with creating good user-stories that fills all the criterias. By being active in team-meetings.
+
+- What is my contribution towards the team's deliveries?
+This week I have mostly together with my workgroup worked on solving clustering on the map, so when the user zooms out on the map the parking slots groups together.
+I have also worked on a presenation the group had this wednesday.
