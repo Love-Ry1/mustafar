@@ -69,6 +69,13 @@ In this section you will be able to find paths to our source code,reflections,so
 
 ## Screenshots
 
+<p float="left">
+![Contribution1](https://user-images.githubusercontent.com/89937556/197385719-ca8c6c39-5f0e-48fc-9c32-75d8336d3c0f.PNG)
+
+![Contribution2](https://user-images.githubusercontent.com/89937556/197385730-5c815019-d0fb-446a-b81e-8863cc929324.PNG)
+
+ </p>
+
 
 
 ## Running the application
