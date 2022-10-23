@@ -79,7 +79,7 @@ In this section you will be able to find paths to our source code,reflections,so
 
 ![Contribution1](https://user-images.githubusercontent.com/89937556/197385719-ca8c6c39-5f0e-48fc-9c32-75d8336d3c0f.PNG)
 
-![Contribution2](https://user-images.githubusercontent.com/89937556/197385730-5c815019-d0fb-446a-b81e-8863cc929324.PNG)
+![Contribution2](https://user-images.githubusercontent.com/83970045/197410219-6f894902-17c6-4adb-b3c2-842659196711.png)
 
 Please note that this is not a clear representation of what everyone has done. Since some group members has had issues commiting and pushing code in the repo, and we used peer-programming. Refer to the team reflections and project final report for a clearer view.
 
