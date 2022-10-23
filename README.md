@@ -77,7 +77,7 @@ In this section you will be able to find paths to our source code,reflections,so
 
 <p float="left">
 
-![Contribution1](https://user-images.githubusercontent.com/89937556/197385719-ca8c6c39-5f0e-48fc-9c32-75d8336d3c0f.PNG)
+![Contribution1](https://user-images.githubusercontent.com/83970045/197410313-db1c3c0b-7625-4b04-99ff-4ec1e346d262.png)
 
 ![Contribution2](https://user-images.githubusercontent.com/83970045/197410219-6f894902-17c6-4adb-b3c2-842659196711.png)
 
