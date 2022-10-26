@@ -1,5 +1,5 @@
 #### 1. What do I want to learn or understand better?
-How to use google maps marker clustering to cluster large group of markers and make the map more readaböe
+How to use google maps marker clustering to cluster large group of markers and make the map more readable
 
 #### 2. How can I help someone else, or the entire team, to learn something new? 
 We will be using the official google maps api for this project. So I can refer them to reading the api.
