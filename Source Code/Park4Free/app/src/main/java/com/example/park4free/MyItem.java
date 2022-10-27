@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 
+//test
 public class MyItem implements ClusterItem {
 
     private LatLng position;
