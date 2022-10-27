@@ -326,9 +326,17 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         recyclerView.setAdapter(adapter);*/
     }
 
-    //TODO
+    /**
+     * Gives addresses1 an array, used in the AddressHandler method: readInText
+     *  @param array the list of strings that will be added to addresses1
+     */
     public void setAddresses(ArrayList<String> array) {addresses1 = array; }
 
+    /**
+     * Gives the user a message on the screen, displaying the name of the address and row clicked.
+     * Implementation of method in interface ItemClickListener
+     *  @param position the string in mData to include in the message
+     */
     @Override
     public void onItemClick(View view, int position) {
         if (!CLICKABLE) return;
@@ -336,7 +344,10 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         filterlist2(adapter.getItem(position));
     }
 
-    //TODO
+    /**
+     * Determines what addresses the recyclerview should display given a string
+     * @param text the substring addresses that will be displayed should contain
+     */
     private void filterlist(String text){
         ArrayList<String> filteredList = new ArrayList<>();
 
@@ -354,6 +365,10 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
     }
 
+    /**
+     * Called onClick from row item; moving the camera to the address coordinates
+     * @param s The address to move the camera to
+     */
     private void filterlist2(String s) {
         List<Address> filterList = new ArrayList<>();
 
@@ -747,12 +762,18 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
         private void rendowWindowText(Marker marker, View view){
 
+            System.out.println(""+ marker.getId());
+            //while (marker.getTitle() == null){}
             String title = marker.getTitle();
+            System.out.println(""+title);
             TextView tvTitle = (TextView) view.findViewById(R.id.title);
 
-            if(!title.equals("")){
-                tvTitle.setText(title);
-            }
+            try {
+                if(!title.equals("")){
+                    tvTitle.setText(title);
+                }
+
+            }catch (Exception e){}
 
             String snippet = marker.getSnippet();
             TextView tvSnippet = (TextView) view.findViewById(R.id.snippet);
