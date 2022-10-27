@@ -51,13 +51,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return mData.size();
     }
 
+    /**
+     * Sets the length to the input filterlist and assigns the input filterlist to mData
+     * @param filteredList the list that will be assigned to mData
+     */
     public void setItemModels(List<String> filteredList){
         length = filteredList.size();
         this.mData = (ArrayList<String>) filteredList;
         notifyDataSetChanged();
     }
 
-public List<String> getmData() {return mData;}
+    /**
+     * Returns mData
+     * @return mData to be returned
+     */
+    public List<String> getmData() {return mData;}
 
 
     /**
