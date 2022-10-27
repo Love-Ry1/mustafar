@@ -1,1 +1,11 @@
+- What do I want to learn or understand better?
+Since this is the last sprint and most of the project is done, I want to reflect and learn how we theoretically could expand the project if we had more time.
 
+- How can I help someone else, or the entire team, to learn something new?
+This is the last sprint where most of the project is done, so I can mostly help others with reflecting on how the project went.
+
+- What is my contribution towards the team's use of Scrum?
+Since we did not develop much more in the app this week, we mostly used Scrum as an aid in our meetings and presentation.
+
+- What is my contribution towards the team's deliveries?
+I helped with writing the final report, fixing small things in the project/code and helping with creating and presenting a demo of our application.
