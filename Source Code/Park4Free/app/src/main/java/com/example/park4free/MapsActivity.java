@@ -129,9 +129,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     private final int radius = 2000;
     private final int radius1 = 500;
 
-
     Marker sweden;
 
+    /**
+     * This class is used to give the map markers custom parking icons and a custom info box
+     */
     private class ParkingRenderer extends DefaultClusterRenderer<MyItem>{
 
         //private final IconGenerator mIconGenerator = new IconGenerator(getApplicationContext());
@@ -144,7 +146,6 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         @Override
         protected void onBeforeClusterItemRendered(@NonNull MyItem parking, MarkerOptions markerOptions) {
 
-
             mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
             // Draw a single person - show their profile photo and set the info window to show their name
             markerOptions
@@ -152,31 +153,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
                     .title(parking.title).snippet(parking.getSnippet());
         }
 
-/*
-        @Override
-        protected void onClusterItemUpdated(@NonNull MyItem parking, Marker marker) {
-            // Same implementation as onBeforeClusterItemRendered() (to update cached markers)
-            marker.setIcon(getItemIcon(parking));
-            marker.setTitle(parking.title);
-        }
-*/
-
-        /**
-         * Get a descriptor for a single person (i.e., a marker outside a cluster) from their
-         * profile photo to be used for a marker icon
-         *
-         * @param parking person to return an BitmapDescriptor for
-         * @return the person's profile photo as a BitmapDescriptor
-         */
-/*        private BitmapDescriptor getItemIcon(MyItem parking) {
-            mImageView.setImageResource(parking.parkingIcon);
-            Bitmap icon = mIconGenerator.makeIcon();
-            return BitmapDescriptorFactory.fromBitmap(icon);
-        }*/
-
-
     }
 
+    /**
+     * Initializes the ClusterManager so that it can be used to display clustered map markers and custom parking icons
+     */
     private void setUpClusterer() {
 
         // Initialize the manager with the context and the map.
@@ -742,7 +723,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
     }
 
     /**
-     * INSERT JAVADOC
+     * Turns a png image into a BitMapDescriptor that can be used to display custom parking icons for the map marker
      */
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
@@ -753,6 +734,9 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 
+    /**
+     * Used to create a custom info box for the map marker that can contains several lines of text and description
+     */
     public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
         private final View mWindow;
