@@ -19,13 +19,23 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ItemClickListener mClickListener;
     private int length;
 
-    // data is passed into the constructor
+     /**
+     * Constructor for the class object
+     * @param context for passing the context 
+     * @param data the data for the viewholder
+     */
     MyRecyclerViewAdapter(Context context, List<String> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
 
-    // inflates the row layout from xml when needed
+     /**
+     * This method calls onCreateViewHolder to create a new ViewHolder and initializes some 
+     * private fields to be used by RecyclerView.
+     * @param parent the object parent
+     * @param viewType the type variable
+     * @return ViewHolder the new viewholder
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,7 +43,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+     /**
+     * This method internally calls onBindViewHolder to update the ViewHolder contents with the item 
+     * at the given position and also sets up some private fields to be used by RecyclerView.
+     * @param holder the view holder to be modified
+     * @param position the position to be modified
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String address = mData.get(position);
