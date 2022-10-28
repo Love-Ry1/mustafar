@@ -344,10 +344,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         filterlist2(adapter.getItem(position));
     }
 
-    /**
-     * Determines what addresses the recyclerview should display given a string
-     * @param text the substring addresses that will be displayed should contain
-     */
+     // Determines what addresses the recyclerview should display given a string
     private void filterlist(String text){
         ArrayList<String> filteredList = new ArrayList<>();
 
@@ -365,10 +362,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         }
     }
 
-    /**
-     * Called onClick from row item; moving the camera to the address coordinates
-     * @param s The address to move the camera to
-     */
+      // Called onClick from row item; moving the camera to the address coordinates
     private void filterlist2(String s) {
         List<Address> filterList = new ArrayList<>();
 

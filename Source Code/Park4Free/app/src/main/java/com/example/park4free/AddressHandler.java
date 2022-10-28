@@ -34,9 +34,7 @@ public class AddressHandler extends Thread {
 
     }
 
-    /**
-     * Gets Addresses as strings added to this.array from Addresses.txt in the assets folder
-     */
+     // Gets Addresses as strings added to this.array from Addresses.txt in the assets folder
     private void readinText() {
         array = new ArrayList<>();
         BufferedReader reader;

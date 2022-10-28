@@ -40,7 +40,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.myTextView.setText(address);
     }
 
-    // total number of rows
 
     /**
      * Gets the total number of rows
